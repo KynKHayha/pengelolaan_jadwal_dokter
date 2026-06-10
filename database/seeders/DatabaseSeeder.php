@@ -18,6 +18,14 @@ class DatabaseSeeder extends Seeder
         // === USERS ===
         $admin = User::create([
             'name'     => 'Muhammad Rijal Alfatori',
+            'email'    => 'admin@docplanner.com',
+            'password' => Hash::make('password123'),
+            'role'     => 'admin',
+        ]);
+
+        // Backup admin dengan email lama (kalau masih inget email lama)
+        User::create([
+            'name'     => 'Admin DocPlanner',
             'email'    => 'admin@dokterjanji.com',
             'password' => Hash::make('password123'),
             'role'     => 'admin',
@@ -37,12 +45,19 @@ class DatabaseSeeder extends Seeder
             'role'     => 'user',
         ]);
 
+        $user3 = User::create([
+            'name'     => 'Budi Santoso',
+            'email'    => 'budi@gmail.com',
+            'password' => Hash::make('password123'),
+            'role'     => 'user',
+        ]);
+
         // === DOKTER ===
         $dokter1 = Dokter::create([
             'nama_dokter'  => 'Dr. Ahmad Fauzi, Sp.JP',
             'spesialisasi' => 'Jantung dan Pembuluh Darah',
             'no_telepon'   => '081234567890',
-            'bio'          => 'Dokter spesialis jantung berpengalaman lebih dari 15 tahun.',
+            'bio'          => 'Dokter spesialis jantung berpengalaman lebih dari 15 tahun di RSUD Kota.',
         ]);
 
         $dokter2 = Dokter::create([
@@ -64,6 +79,13 @@ class DatabaseSeeder extends Seeder
             'spesialisasi' => 'Kandungan & Kebidanan',
             'no_telepon'   => '084567890123',
             'bio'          => 'Dokter spesialis kandungan berpengalaman 10 tahun.',
+        ]);
+
+        $dokter5 = Dokter::create([
+            'nama_dokter'  => 'Dr. Hendra Wijaya, Sp.N',
+            'spesialisasi' => 'Neurologi',
+            'no_telepon'   => '085678901234',
+            'bio'          => 'Spesialis saraf dengan keahlian di bidang migrain dan stroke.',
         ]);
 
         // === RUANGAN ===
@@ -91,7 +113,13 @@ class DatabaseSeeder extends Seeder
             'deskripsi'    => 'Ruang pemeriksaan kandungan dan kebidanan',
         ]);
 
-        // === JADWAL ===
+        $ruangan5 = Ruangan::create([
+            'nama_ruangan' => 'Ruang Neurologi',
+            'kode_ruangan' => 'RNE-01',
+            'deskripsi'    => 'Ruang pemeriksaan saraf lantai 2',
+        ]);
+
+        // === JADWAL (dengan harga) ===
         $jadwal1 = Jadwal::create([
             'dokter_id'   => $dokter1->id,
             'ruangan_id'  => $ruangan1->id,
@@ -99,6 +127,7 @@ class DatabaseSeeder extends Seeder
             'jam_mulai'   => '08:00',
             'jam_selesai' => '12:00',
             'kuota'       => 10,
+            'harga'       => 150000,
             'is_active'   => true,
         ]);
 
@@ -109,6 +138,7 @@ class DatabaseSeeder extends Seeder
             'jam_mulai'   => '13:00',
             'jam_selesai' => '17:00',
             'kuota'       => 10,
+            'harga'       => 150000,
             'is_active'   => true,
         ]);
 
@@ -119,26 +149,51 @@ class DatabaseSeeder extends Seeder
             'jam_mulai'   => '09:00',
             'jam_selesai' => '13:00',
             'kuota'       => 15,
+            'harga'       => 120000,
             'is_active'   => true,
         ]);
 
         $jadwal4 = Jadwal::create([
+            'dokter_id'   => $dokter2->id,
+            'ruangan_id'  => $ruangan2->id,
+            'hari'        => 'Kamis',
+            'jam_mulai'   => '14:00',
+            'jam_selesai' => '17:00',
+            'kuota'       => 15,
+            'harga'       => 120000,
+            'is_active'   => true,
+        ]);
+
+        $jadwal5 = Jadwal::create([
             'dokter_id'   => $dokter3->id,
             'ruangan_id'  => $ruangan3->id,
             'hari'        => 'Kamis',
             'jam_mulai'   => '08:00',
             'jam_selesai' => '11:00',
             'kuota'       => 12,
+            'harga'       => 100000,
             'is_active'   => true,
         ]);
 
-        $jadwal5 = Jadwal::create([
+        $jadwal6 = Jadwal::create([
             'dokter_id'   => $dokter4->id,
             'ruangan_id'  => $ruangan4->id,
             'hari'        => 'Jumat',
             'jam_mulai'   => '10:00',
             'jam_selesai' => '14:00',
             'kuota'       => 8,
+            'harga'       => 200000,
+            'is_active'   => true,
+        ]);
+
+        $jadwal7 = Jadwal::create([
+            'dokter_id'   => $dokter5->id,
+            'ruangan_id'  => $ruangan5->id,
+            'hari'        => 'Sabtu',
+            'jam_mulai'   => '08:00',
+            'jam_selesai' => '12:00',
+            'kuota'       => 10,
+            'harga'       => 175000,
             'is_active'   => true,
         ]);
 
@@ -147,23 +202,31 @@ class DatabaseSeeder extends Seeder
             'user_id'         => $user1->id,
             'jadwal_id'       => $jadwal1->id,
             'keluhan'         => 'Dada terasa sakit dan sesak napas',
-            'tanggal_booking' => now()->addDays(3)->format('Y-m-d'),
+            'tanggal_booking' => now()->next('Monday')->format('Y-m-d'),
             'status'          => 'confirmed',
         ]);
 
         $booking2 = Booking::create([
             'user_id'         => $user1->id,
             'jadwal_id'       => $jadwal3->id,
-            'keluhan'         => 'Anak demam sudah 3 hari',
-            'tanggal_booking' => now()->addDays(1)->format('Y-m-d'),
+            'keluhan'         => 'Anak demam sudah 3 hari tidak turun',
+            'tanggal_booking' => now()->next('Tuesday')->format('Y-m-d'),
             'status'          => 'pending',
         ]);
 
         $booking3 = Booking::create([
             'user_id'         => $user2->id,
-            'jadwal_id'       => $jadwal5->id,
-            'keluhan'         => 'Kontrol rutin kehamilan',
-            'tanggal_booking' => now()->addDays(5)->format('Y-m-d'),
+            'jadwal_id'       => $jadwal6->id,
+            'keluhan'         => 'Kontrol rutin kehamilan trimester kedua',
+            'tanggal_booking' => now()->next('Friday')->format('Y-m-d'),
+            'status'          => 'pending',
+        ]);
+
+        $booking4 = Booking::create([
+            'user_id'         => $user3->id,
+            'jadwal_id'       => $jadwal7->id,
+            'keluhan'         => 'Sering sakit kepala dan pusing',
+            'tanggal_booking' => now()->next('Saturday')->format('Y-m-d'),
             'status'          => 'pending',
         ]);
 
@@ -178,7 +241,14 @@ class DatabaseSeeder extends Seeder
         Pembayaran::create([
             'booking_id'        => $booking2->id,
             'jumlah'            => 120000,
-            'metode_pembayaran' => 'QRIS',
+            'metode_pembayaran' => 'DANA',
+            'status_pembayaran' => 'pending',
+        ]);
+
+        Pembayaran::create([
+            'booking_id'        => $booking3->id,
+            'jumlah'            => 200000,
+            'metode_pembayaran' => 'GoPay',
             'status_pembayaran' => 'pending',
         ]);
     }

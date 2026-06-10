@@ -50,10 +50,10 @@
                     <select id="dokter_id"
                             name="dokter_id"
                             class="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all duration-150 bg-white @error('dokter_id') border-red-400 bg-red-50 @enderror">
-                        <option value="">"” Pilih Dokter "”</option>
+                        <option value="">– Pilih Dokter "”</option>
                         @foreach($dokters as $dokter)
                         <option value="{{ $dokter->id }}" {{ old('dokter_id') == $dokter->id ? 'selected' : '' }}>
-                            {{ $dokter->nama_dokter }} "” {{ $dokter->spesialisasi }}
+                            {{ $dokter->nama_dokter }} – {{ $dokter->spesialisasi }}
                         </option>
                         @endforeach
                     </select>
@@ -70,7 +70,7 @@
                     <select id="ruangan_id"
                             name="ruangan_id"
                             class="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all duration-150 bg-white @error('ruangan_id') border-red-400 bg-red-50 @enderror">
-                        <option value="">"” Pilih Ruangan "”</option>
+                        <option value="">– Pilih Ruangan "”</option>
                         @foreach($ruangans as $ruangan)
                         <option value="{{ $ruangan->id }}" {{ old('ruangan_id') == $ruangan->id ? 'selected' : '' }}>
                             {{ $ruangan->nama_ruangan }}{{ $ruangan->kode_ruangan ? ' (' . $ruangan->kode_ruangan . ')' : '' }}
@@ -90,7 +90,7 @@
                     <select id="hari"
                             name="hari"
                             class="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all duration-150 bg-white @error('hari') border-red-400 bg-red-50 @enderror">
-                        <option value="">"” Pilih Hari "”</option>
+                        <option value="">– Pilih Hari "”</option>
                         @foreach(['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'] as $hari)
                         <option value="{{ $hari }}" {{ old('hari') === $hari ? 'selected' : '' }}>{{ $hari }}</option>
                         @endforeach

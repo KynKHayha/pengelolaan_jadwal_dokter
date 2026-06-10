@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DocPlanner "” Jadwalkan Dokter Online</title>
+    <title>DocPlanner – Jadwalkan Dokter Online</title>
     <meta name="description" content="Platform penjadwalan dokter online terpercaya. Buat janji dengan dokter pilihan Anda dengan mudah dan cepat.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -79,7 +79,7 @@
                     <div class="flex flex-wrap gap-4 fade-up delay-3">
                         <a href="{{ route('register') }}"
                            class="bg-white text-blue-700 hover:bg-blue-50 font-bold px-8 py-3.5 rounded-xl text-base transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1">
-                            Mulai Sekarang "” Gratis
+                            Mulai Sekarang – Gratis
                         </a>
                         <a href="{{ route('login') }}"
                            class="border-2 border-white/40 text-white hover:bg-white/10 font-semibold px-8 py-3.5 rounded-xl text-base transition-all">
@@ -179,7 +179,7 @@
             <p class="text-blue-200 mb-8">Daftar sekarang dan nikmati kemudahan jadwal dokter online</p>
             <a href="{{ route('register') }}"
                class="inline-block bg-white text-blue-700 hover:bg-blue-50 font-bold px-10 py-4 rounded-xl text-base shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1">
-                Daftar Sekarang "” Gratis
+                Daftar Sekarang – Gratis
             </a>
         </div>
     </section>

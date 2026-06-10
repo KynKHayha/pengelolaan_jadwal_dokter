@@ -54,7 +54,7 @@
             <div>
                 <h2 class="text-xl font-bold text-slate-800">Jadwal Praktik
                     @if(request('hari'))
-                    <span class="text-blue-600">"” {{ request('hari') }}</span>
+                    <span class="text-blue-600">– {{ request('hari') }}</span>
                     @endif
                 </h2>
                 <p class="text-sm text-slate-500 mt-0.5">

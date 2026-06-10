@@ -1,4 +1,4 @@
-﻿@extends('layouts.admin')
+@extends('layouts.admin')
 @section('page-title', 'Detail Booking')
 
 @section('content')
@@ -69,7 +69,7 @@
                         {{-- Dokter --}}
                         <div>
                             <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Dokter</p>
-                            <p class="text-slate-800 font-semibold">{{ $booking->jadwal->dokter->name ?? '-' }}</p>
+                            <p class="text-slate-800 font-semibold">{{ $booking->jadwal->dokter->nama_dokter ?? '-' }}</p>
                             <p class="text-sm text-slate-500">{{ $booking->jadwal->dokter->spesialisasi ?? '-' }}</p>
                         </div>
 
@@ -140,7 +140,7 @@
 
                         <div>
                             <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Metode Pembayaran</p>
-                            <p class="text-slate-800 font-semibold capitalize">{{ $booking->pembayaran->metode ?? '-' }}</p>
+                            <p class="text-slate-800 font-semibold capitalize">{{ $booking->pembayaran->metode_pembayaran ?? '-' }}</p>
                         </div>
 
                         <div>
@@ -151,7 +151,7 @@
                                     'valid'   => ['bg-green-100 text-green-800', 'Valid'],
                                     'invalid' => ['bg-red-100 text-red-800', 'Tidak Valid'],
                                 ];
-                                $bp = $bayarMap[$booking->pembayaran->status] ?? ['bg-slate-100 text-slate-600', ucfirst($booking->pembayaran->status ?? '-')];
+                                $bp = $bayarMap[$booking->pembayaran->status_pembayaran] ?? ['bg-slate-100 text-slate-600', ucfirst($booking->pembayaran->status_pembayaran ?? '-')];
                             @endphp
                             <span class="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold {{ $bp[0] }}">
                                 {{ $bp[1] }}

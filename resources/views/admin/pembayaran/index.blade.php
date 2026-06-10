@@ -82,7 +82,7 @@
 
                         {{-- Dokter --}}
                         <td class="px-4 py-3">
-                            <p class="font-semibold text-slate-800 text-sm">{{ $pembayaran->booking->jadwal->dokter->name ?? '-' }}</p>
+                            <p class="font-semibold text-slate-800 text-sm">{{ $pembayaran->booking->jadwal->dokter->nama_dokter ?? '-' }}</p>
                             <p class="text-xs text-slate-400">{{ $pembayaran->booking->jadwal->dokter->spesialisasi ?? '-' }}</p>
                         </td>
 
@@ -93,7 +93,7 @@
 
                         {{-- Metode --}}
                         <td class="px-4 py-3 text-slate-600 capitalize">
-                            {{ $pembayaran->metode ?? '-' }}
+                            {{ $pembayaran->metode_pembayaran ?? '-' }}
                         </td>
 
                         {{-- Status --}}
@@ -104,7 +104,7 @@
                                     'valid'   => ['bg-green-100 text-green-800', 'Valid'],
                                     'invalid' => ['bg-red-100 text-red-800', 'Tidak Valid'],
                                 ];
-                                $bp = $bayarMap[$pembayaran->status] ?? ['bg-slate-100 text-slate-600', ucfirst($pembayaran->status ?? '-')];
+                                $bp = $bayarMap[$pembayaran->status_pembayaran] ?? ['bg-slate-100 text-slate-600', ucfirst($pembayaran->status ?? '-')];
                             @endphp
                             <span class="inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium {{ $bp[0] }}">
                                 {{ $bp[1] }}

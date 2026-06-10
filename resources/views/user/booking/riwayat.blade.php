@@ -1,4 +1,4 @@
-﻿@extends('layouts.user')
+@extends('layouts.user')
 @section('title', 'Riwayat Booking')
 
 @section('content')
@@ -131,15 +131,15 @@
                         {{-- Pembayaran --}}
                         <td class="px-5 py-4">
                             @if($booking->pembayaran)
-                                @if($booking->pembayaran->status === 'pending')
+                                @if($booking->pembayaran->status_pembayaran === 'pending')
                                     <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-amber-100 text-amber-800">
                                         <span class="w-1.5 h-1.5 rounded-full bg-amber-500 mr-1.5"></span>Verifikasi
                                     </span>
-                                @elseif($booking->pembayaran->status === 'valid')
+                                @elseif($booking->pembayaran->status_pembayaran === 'valid')
                                     <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
                                         <span class="w-1.5 h-1.5 rounded-full bg-green-500 mr-1.5"></span>Valid
                                     </span>
-                                @elseif($booking->pembayaran->status === 'invalid')
+                                @elseif($booking->pembayaran->status_pembayaran === 'invalid')
                                     <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800">
                                         <span class="w-1.5 h-1.5 rounded-full bg-red-500 mr-1.5"></span>Tidak Valid
                                     </span>
@@ -149,7 +149,7 @@
                                     Belum Upload
                                 </span>
                             @else
-                                <span class="text-xs text-slate-300">"”</span>
+                                <span class="text-xs text-slate-300">–</span>
                             @endif
                         </td>
 

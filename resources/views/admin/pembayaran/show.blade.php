@@ -45,7 +45,7 @@
 
                         <div>
                             <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Dokter</p>
-                            <p class="text-slate-800 font-semibold">{{ $pembayaran->booking->jadwal->dokter->name ?? '-' }}</p>
+                            <p class="text-slate-800 font-semibold">{{ $pembayaran->booking->jadwal->dokter->nama_dokter ?? '-' }}</p>
                             <p class="text-sm text-slate-500">{{ $pembayaran->booking->jadwal->dokter->spesialisasi ?? '-' }}</p>
                         </div>
 

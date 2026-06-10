@@ -112,7 +112,7 @@
                 <div class="md:col-span-2">
                     <label class="block text-sm font-semibold text-slate-700 mb-1.5">
                         Foto Dokter
-                        <span class="text-slate-400 font-normal">(opsional "” kosongkan jika tidak ingin mengubah)</span>
+                        <span class="text-slate-400 font-normal">(opsional – kosongkan jika tidak ingin mengubah)</span>
                     </label>
 
                     {{-- Foto Saat Ini --}}

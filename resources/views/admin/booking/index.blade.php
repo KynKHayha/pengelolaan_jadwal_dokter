@@ -1,4 +1,4 @@
-﻿@extends('layouts.admin')
+@extends('layouts.admin')
 @section('page-title', 'Kelola Booking')
 
 @section('content')
@@ -81,7 +81,7 @@
 
                         {{-- Dokter --}}
                         <td class="px-4 py-3">
-                            <p class="font-semibold text-slate-800 text-sm">{{ $booking->jadwal->dokter->name ?? '-' }}</p>
+                            <p class="font-semibold text-slate-800 text-sm">{{ $booking->jadwal->dokter->nama_dokter ?? '-' }}</p>
                             <p class="text-xs text-slate-400">{{ $booking->jadwal->dokter->spesialisasi ?? '-' }}</p>
                         </td>
 
@@ -90,7 +90,7 @@
                             <p class="text-sm text-slate-700 font-medium capitalize">{{ $booking->jadwal->hari ?? '-' }}</p>
                             <p class="text-xs text-slate-400">
                                 {{ $booking->jadwal->jam_mulai ?? '' }}
-                                @if($booking->jadwal->jam_selesai) "“ {{ $booking->jadwal->jam_selesai }} @endif
+                                @if($booking->jadwal->jam_selesai) – {{ $booking->jadwal->jam_selesai }} @endif
                             </p>
                         </td>
 
@@ -123,7 +123,7 @@
                                         'valid'   => ['bg-green-100 text-green-800', 'Valid'],
                                         'invalid' => ['bg-red-100 text-red-800', 'Tidak Valid'],
                                     ];
-                                    $bp = $bayarMap[$booking->pembayaran->status] ?? ['bg-slate-100 text-slate-600', ucfirst($booking->pembayaran->status)];
+                                    $bp = $bayarMap[$booking->pembayaran->status_pembayaran] ?? ['bg-slate-100 text-slate-600', ucfirst($booking->pembayaran->status_pembayaran)];
                                 @endphp
                                 <span class="inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium {{ $bp[0] }}">
                                     {{ $bp[1] }}
